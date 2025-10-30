@@ -9,7 +9,6 @@ export default function Timeline() {
       title: 'Applications Open',
       description: 'Registration begins for the new season. Teams can start submitting their groundbreaking ideas.',
       icon: <Users className="w-5 h-5" />,
-      status: 'upcoming',
       phase: 'Phase 1'
     },
     {
@@ -17,7 +16,6 @@ export default function Timeline() {
       title: 'Submission Deadline',
       description: 'Final day to submit your team application and project proposal for campus-level consideration.',
       icon: <Clock className="w-5 h-5" />,
-      status: 'upcoming',
       phase: 'Phase 2'
     },
     {
@@ -25,7 +23,6 @@ export default function Timeline() {
       title: 'Campus Finals',
       description: 'On-campus competitions where teams pitch their ideas to expert judges and industry leaders.',
       icon: <MapPin className="w-5 h-5" />,
-      status: 'upcoming',
       phase: 'Phase 3'
     },
     {
@@ -33,7 +30,6 @@ export default function Timeline() {
       title: 'Regional Rounds',
       description: 'Winning teams from campuses compete in regional finals across major global hubs.',
       icon: <Trophy className="w-5 h-5" />,
-      status: 'upcoming',
       phase: 'Phase 4'
     },
     {
@@ -41,7 +37,6 @@ export default function Timeline() {
       title: 'Global Accelerator',
       description: 'Top teams participate in an intensive startup accelerator program with world-class mentors.',
       icon: <Award className="w-5 h-5" />,
-      status: 'upcoming',
       phase: 'Phase 5'
     },
     {
@@ -49,22 +44,17 @@ export default function Timeline() {
       title: 'Global Finals',
       description: 'The ultimate competition where finalists pitch for the $1M grand prize at the United Nations.',
       icon: <Calendar className="w-5 h-5" />,
-      status: 'upcoming',
       phase: 'Grand Finale'
     }
   ];
 
   return (
-    <section id="timeline" className="relative py-24 overflow-hidden bg-gradient-to-b from-black via-gray-950 to-black">
-      {/* Background Effects */}
-      <div className="absolute top-1/4 -left-20 w-72 h-72 bg-pink-500/10 blur-3xl rounded-full"></div>
-      <div className="absolute bottom-1/4 -right-20 w-72 h-72 bg-pink-400/5 blur-3xl rounded-full"></div>
-      
+    <section id="timeline" className="relative py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
@@ -82,17 +72,10 @@ export default function Timeline() {
           {/* Center Line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-pink-500/20 via-pink-500/40 to-pink-500/20 hidden lg:block"></div>
           
-          {/* Mobile Line */}
-          <div className="absolute left-6 w-1 h-full bg-gradient-to-b from-pink-500/20 via-pink-500/40 to-pink-500/20 lg:hidden"></div>
-
           <div className="space-y-12 lg:space-y-8">
             {timelineItems.map((item, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ x: index % 2 === 0 ? -40 : 40, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: index * 0.1 }}
                 className={`relative flex flex-col lg:flex-row items-start lg:items-center ${
                   index % 2 === 0 ? 'lg:flex-row-reverse' : ''
                 }`}
@@ -104,8 +87,11 @@ export default function Timeline() {
                     : 'lg:pl-12'
                 } lg:w-1/2 mb-4 lg:mb-0`}>
                   <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    className="bg-white/5 backdrop-blur-md border border-pink-500/20 rounded-2xl p-6 hover:border-pink-500/40 hover:shadow-lg hover:shadow-pink-500/10 transition-all duration-300"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-white/5 backdrop-blur-md border border-pink-500/20 rounded-2xl p-6 hover:border-pink-500/40 transition-all duration-300"
                   >
                     {/* Phase Badge */}
                     <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold mb-3 ${
@@ -136,22 +122,9 @@ export default function Timeline() {
 
                 {/* Timeline Node */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 lg:flex items-center justify-center w-12 h-12 z-10 hidden">
-                  <motion.div
-                    whileHover={{ scale: 1.2 }}
-                    className="w-6 h-6 bg-pink-500 rounded-full border-4 border-black shadow-lg shadow-pink-500/30"
-                  >
-                    <div className="w-full h-full rounded-full bg-pink-400 animate-pulse"></div>
-                  </motion.div>
-                </div>
-
-                {/* Mobile Node */}
-                <div className="absolute left-6 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 z-10 lg:hidden">
-                  <motion.div
-                    whileHover={{ scale: 1.2 }}
-                    className="w-5 h-5 bg-pink-500 rounded-full border-4 border-black shadow-lg shadow-pink-500/30"
-                  >
-                    <div className="w-full h-full rounded-full bg-pink-400 animate-pulse"></div>
-                  </motion.div>
+                  <div className="w-6 h-6 bg-pink-500 rounded-full border-4 border-black shadow-lg shadow-pink-500/30">
+                    <div className="w-full h-full rounded-full bg-pink-400"></div>
+                  </div>
                 </div>
 
                 {/* Date for Desktop */}
@@ -161,8 +134,8 @@ export default function Timeline() {
                     : 'lg:pr-12 lg:text-right'
                 } lg:w-1/2 hidden lg:block`}>
                   <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
                     className="text-2xl font-bold text-white bg-black/40 backdrop-blur-sm rounded-xl p-4 border border-white/5"
@@ -170,55 +143,10 @@ export default function Timeline() {
                     {item.date}
                   </motion.div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-
-          {/* Final Glow Effect */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-pink-500 rounded-full blur-lg hidden lg:block"
-          />
         </div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="text-center mt-16"
-        >
-          <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/20 rounded-2xl p-8 backdrop-blur-md">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Ready to Start Your Journey?
-            </h3>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Join thousands of students worldwide who are building sustainable startups and creating real impact.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="#apply"
-                className="px-8 py-3 rounded-full bg-pink-500 text-black font-semibold shadow-lg hover:bg-pink-400 transition-all duration-300"
-              >
-                Apply Now
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="#guidelines"
-                className="px-8 py-3 rounded-full border border-white/30 text-white hover:bg-white/10 transition-all duration-300"
-              >
-                View Guidelines
-              </motion.a>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
