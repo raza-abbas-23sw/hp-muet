@@ -7,8 +7,6 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center bg-black text-white overflow-hidden"
     >
-      {/* Subtle background gradient for depth */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#1a0b0b] to-[#3b0a1a] opacity-90"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
         {/* Text Section */}
@@ -35,7 +33,7 @@ export default function Hero() {
               href="#about"
               className="px-6 py-3 rounded-full bg-pink-500 text-black font-semibold shadow-lg hover:bg-pink-400 transition"
             >
-              Learn More
+              Register
             </a>
             <a
               href="#timeline"
